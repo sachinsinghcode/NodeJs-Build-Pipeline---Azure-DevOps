@@ -3,6 +3,15 @@
 This repository contains an **Azure DevOps pipeline** that automates the build and packaging process for **Node.js applications**.  
 It takes care of installing dependencies, archiving required files, and publishing build artifacts that can be used in **release pipelines** or downloaded for deployment.
 
+
+# 🧑‍💻Code and Version Control
+
+1. Azure DevOps Support major code repositories like Github, Bitbucket, GitLab etx
+2. It has its own solution called Azure Repos with advanced features compareable to Github Enterprice
+3. Any Service can be linked to the next stage using simple Auth and Service Priciples.
+
+# ⚒️ Build Pipeline
+
 ---
 
 ## 📌 What This Pipeline Does
@@ -16,7 +25,7 @@ It takes care of installing dependencies, archiving required files, and publishi
 
 ---
 
-## 📂 Full Pipeline YAML
+## 📂 Build Pipeline YAML
 
 ```yaml
 trigger:
@@ -71,3 +80,16 @@ jobs:
         PathtoPublish: $(Build.ArtifactStagingDirectory)
         ArtifactName: 'drop'
         publishLocation: 'Container'
+
+```
+
+# ⚒️ Release Pipeline
+
+## 📌 What This Pipeline Does
+
+1. Set the Build Artifact from the NodeJs Build Pipeline as the Source Artifact for the release pipeline
+2. Create stages as per your number of environments in your project, 
+3. Special Connectors are available to Deploy the Build to Azure, AWS, GCP or even other cloud services.
+4. Custom scripts are also supported if special connector tasks are not available for the service.
+5. Environment Variables/Parametes can be defined within the pipeline.
+6. Triggers can be set so the deployment starts asa a new build is available
